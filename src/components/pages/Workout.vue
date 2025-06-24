@@ -18,7 +18,10 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
             <h6>Reps</h6>
             <h6 class="grid-weight">Weight</h6>
             <div class="workout-grid" v-for="(w, wIdx) in warmup" key="wIdx">
-                {{ w.name }}
+                <div class="grid-name">
+                    <p>{{ w.name }}</p>
+                    <button><i class="fa-regular fa-circle-question"></i></button>
+                </div>
             </div>
         </div>
     </section>
