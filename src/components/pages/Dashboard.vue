@@ -15,6 +15,7 @@ const todaysFact = gymHealthFacts[randomNumber]
             </div>
             <button>Start workout &rarr;</button>
         </div>
+        <br />
         <Grid />
     </section>
 
