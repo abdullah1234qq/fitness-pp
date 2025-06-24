@@ -1,11 +1,28 @@
 <script setup></script>
 <template>
     <header>
-        <h1 class="text-gradient"> Hi 👋 I am Abdullah Hussain</h1>
+        <h1 class="text-gradient"> Hi 👋 I am Abdullah Hussain </h1>
     </header>
     <main>
         <slot />
     </main>
-    <footer></footer>
+    <footer>
+        <small>Created by </small>
+        <a href="https://www.github.com/abdullah1234qq" target="_blank">Abdullah Hussain </a>
+    </footer>
 </template>
-<style scoped></style>
+<style scoped>
+header,
+footer,
+main {
+    padding: 1rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+</style>
