@@ -47,7 +47,10 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
                 </div>
                 <br />
 
-                <div class="card"><button>Save and Exit <i class="fa-solid fa-save"></i></button></div>
+                <div class="card">
+                    <button>Save and Exit <i class="fa-solid fa-save"></i></button>
+                    <button>Complete <i class="fa-solid fa-check"></i></button>
+                </div>
             </div>
         </div>
     </section>
