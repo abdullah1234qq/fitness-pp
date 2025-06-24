@@ -28,4 +28,16 @@ const workoutTypes = ["push", "pull", "legs"]
 #grid button {
     width: 100%;
 }
+
+.plan-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
 </style>
