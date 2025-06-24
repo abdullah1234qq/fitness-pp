@@ -17,12 +17,23 @@ footer,
 main {
     padding: 1rem;
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 a {
     text-decoration: none;
-    color: black;
+}
+
+main {
+    padding: 1;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 3rem 0;
 }
 </style>
