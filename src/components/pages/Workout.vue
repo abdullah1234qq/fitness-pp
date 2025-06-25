@@ -47,6 +47,10 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
                 </div>
             </div>
         </div>
+        <div class="card workout-btns">
+            <button>Save & Exit <i class="fa-solid fa-save"></i></button>
+            <button>Complete <i class="fa-solid fa-check"></i></button>
+        </div>
     </section>
 </template>
 <style scoped>
@@ -61,7 +65,8 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
     gap: 1.5rem;
 }
 
-.plan-card-header {
+.plan-card-header,
+.workout-btns {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,7 +74,7 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
 }
 
 .workout-grid,
-.workout-grid-row {
+.qwerty {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 1rem;
