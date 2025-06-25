@@ -83,6 +83,9 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
 
 .grid-name {
     grid-column: span 3 / span 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .grid-name button {
