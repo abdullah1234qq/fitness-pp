@@ -17,10 +17,10 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
             <h6>Sets</h6>
             <h6>Reps</h6>
             <h6 class="grid-weight">Weight</h6>
-            <div class="workout-grid" v-for="(w, wIdx) in workout" key="wIdx">
+            <div class="workout-grid qwerty" v-for="(w, wIdx) in workout" key="wIdx">
                 <div class="grid-name">
                     <p>{{ w.name }}</p>
-                    <button>
+                    <button class="question-btn">
                         <i class="fa-regular fa-circle-question"></i>
                     </button>
                 </div>
@@ -34,10 +34,10 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
                 <h6>Sets</h6>
                 <h6>Reps</h6>
                 <h6 class="grid-weight">Weight</h6>
-                <div class="workout-grid" v-for="(w, wIdx) in workout" key="wIdx">
+                <div class="workout-grid qwerty" v-for="(w, wIdx) in workout" key="wIdx">
                     <div class="grid-name">
                         <p>{{ w.name }}</p>
-                        <button>
+                        <button class="question-btn">
                             <i class="fa-regular fa-circle-question"></i>
                         </button>
                     </div>
@@ -94,6 +94,48 @@ const { workout = [], warmup = [] } = workoutProgram[selectedWorkout] || {};
 .grid-name button:hover {
     transform: none;
     box-shadow: none;
-    color: var(--color-link)
+    color: var(--color-link);
+}
+
+/* hello next copy */
+.question-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.qwerty:hover .question-btn {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.grid-name p {
+    text-transform: capitalize;
+}
+
+.grid-weights {
+    grid-column: span 2 / span 2;
+}
+
+.workout-btns button {
+    flex: 1;
+}
+
+.workout-btns button i {
+    padding-left: 0.5rem;
+}
+
+.exercise-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.exercise-description h3 {
+    text-transform: capitalize;
+}
+
+.exercise-description button i {
+    padding-left: 0.5rem;
 }
 </style>
