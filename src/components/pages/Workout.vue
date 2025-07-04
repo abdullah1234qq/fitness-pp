@@ -2,15 +2,21 @@
 const props = defineProps({
     selectedWorkout: Number,
     data: Object,
+    handleSaveWorkout: Function,
+    isWorkoutCompleted: Boolean
 });
-import  Portal  from "../Portal.vue";
+import Portal from "../Portal.vue";
 import { workoutProgram, exerciseDescriptions } from "../../utils/next.js";
-import { ref,computed } from "vue";
+import { ref, computed } from "vue";
+const workoutType = ['Push',
+    'Pull',
+    'Legs',];
 const { workout = [], warmup = [] } = workoutProgram[props.selectedWorkout] || {};
+console.log(props.selectedWorkout, workout, warmup);
 const selectedExercise = ref(null)
 // ...existing code...
 const exerciseDescription = computed(() => exerciseDescriptions[selectedExercise.value] || {});
-function handleCloseModal(){
+function handleCloseModal() {
     selectedExercise.value = null;
 }
 </script>
@@ -19,21 +25,21 @@ function handleCloseModal(){
         <div class="exercise-description">
             <h3>{{ selectedExercise }}</h3>
             <div>
-                  <small>
+                <small>
                     Description
-                  </small>
+                </small>
                 <p>{{ exerciseDescription }}</p>
             </div>
-            <button @click="handleCloseModal">Close <i  class="fa-solid fa-xmark"></i></button>
+            <button @click="handleCloseModal">Close <i class="fa-solid fa-xmark"></i></button>
         </div>
     </Portal>
     <section id="workout-card">
         <div class="plan-card card">
             <div class="plan-card-header">
-                <p>Day {{ selectedWorkout < 10 ? "0" + selectedWorkout : selectedWorkout }}</p>
+                <p>Day {{ selectedWorkout < 10 ? "0" + ((selectedWorkout + 1)) : (selectedWorkout + 1) }}</p>
                         <i class="fa-solid fa-dumbbell"></i>
             </div>
-            <h2>{{ 'push' }} Workout </h2>
+            <h2>{{ workoutType[selectedWorkout % 3] }} Workout </h2>
         </div>
         <div class="workout-grid">
             <h4 class="grid-name">Warmup</h4>
@@ -44,7 +50,7 @@ function handleCloseModal(){
                 <div class="grid-name">
                     <p>{{ w.name }}</p>
                     <button class="question-btn">
-                        <i @click="()=>{ selectedExercise = w.name }" class="fa-regular fa-circle-question"></i>
+                        <i @click="() => { selectedExercise = w.name }" class="fa-regular fa-circle-question"></i>
                     </button>
                 </div>
                 <p>{{ w.sets }}</p>
@@ -61,18 +67,20 @@ function handleCloseModal(){
                     <div class="grid-name">
                         <p>{{ w.name }}</p>
                         <button class="question-btn">
-                            <i @click="()=>{ selectedExercise = w.name }" class="fa-regular fa-circle-question"></i>
+                            <i @click="() => { selectedExercise = w.name }" class="fa-regular fa-circle-question"></i>
                         </button>
                     </div>
                     <p>{{ w.sets }}</p>
                     <p>{{ w.reps }}</p>
-                    <input v-model="props.data[props.selectedWorkout][w.name]" type="text" placeholder="14kg" class="grid-weight">
+                    <input v-model="props.data[props.selectedWorkout][w.name]" type="text" placeholder="14kg"
+                        class="grid-weight">
                 </div>
             </div>
         </div>
         <div class="card workout-btns">
-            <button>Save & Exit <i class="fa-solid fa-save"></i></button>
-            <button>Complete <i class="fa-solid fa-check"></i></button>
+            <button @click="handleSaveWorkout">Save & Exit <i class="fa-solid fa-save"></i></button>
+            <button :disabled="!isWorkoutCompleted" @click="handleCompleteWorkout">Complete <i
+                    class="fa-solid fa-check"></i></button>
         </div>
     </section>
 </template>

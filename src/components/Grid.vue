@@ -1,11 +1,14 @@
 <script setup>
 import { workoutProgram } from "../utils/next.js"
 const workoutTypes = ["push", "pull", "legs"]
+defineProps({
+    handleSelectWorkout: Function
+})
 </script>
 <template>
     <section id="grid">
-        <button :key="workoutIdx" v-for="(workout, workoutIdx) in Object.keys(workoutProgram)"
-            class="card-button plan-card">
+        <button @click="handleSelectWorkout(workoutIdx)" :key="workoutIdx"
+            v-for="(workout, workoutIdx) in Object.keys(workoutProgram)" class="card-button plan-card">
             <div class="">
                 <p>Day {{ workoutIdx < 9 ? "0" + (workoutIdx + 1) : workoutIdx + 1 }}</p>
 
